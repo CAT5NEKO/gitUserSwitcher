@@ -21,3 +21,5 @@ clean:
 
 test-release:
 	goreleaser release --snapshot --skip-publish --rm-dist
+
+#ForWindows
