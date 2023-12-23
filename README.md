@@ -1,118 +1,97 @@
 <img src="assets/inline-logo.png" alt="logo" width="320" />
 
+# For Windows💻 
+
 <p>
     <a href="https://github.com/lucasnevespereira/go-gituser/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/lucasnevespereira/go-gituser.svg?logo=github&style=flat-square"></a>
     <a href="https://github.com/lucasnevespereira/go-gituser/actions/workflows/release.yml"><img alt="GitHub release" src="https://github.com/lucasnevespereira/go-gituser/actions/workflows/release.yml/badge.svg"></a> 
 </p>
 
 ## Overview
+[Lucas Neves Pereira](https://github.com/lucasnevespereira)さんが製作されているGitアカウントをCLI上でコマンド1つで複数管理できるツールです。
 
-User of multiple git accounts, in order to meet my need to switch regularly between these accounts (student, professional, personal), I developed an open source cli (a command line interface) in Golang.
+職場、学業、趣味開発用のアカウントを保持することが出来、現在どのアカウントを使っているかを確認することも可能です。
 
-This program helps switch between different git user accounts easily.
+今回はどうしても僕がこのツールをWindowsで使いたかったので、コードをお借りしてExe形式で動くようにしました。
+
 
 ![](assets/demo.gif)
 
-It automates the following commands:
+以下のコードが自動化されます。
 
-```
+```shell
 git config --global user.name "yourUsername"
 ```
 
-```
+```shell
 git config --global user.email "yourEmail"
 ```
 
-#### Modes
+#### 選択機能
 
-There is currently 3 modes in this script:
+以下の3つのアカウントを選択することが出来ます。
 
-- 💻 <b>work</b> : for a work related git account.
-- 📚 <b>school</b> : for a school related git account.
-- 🏠 <b>personal</b> : for a personal related git account.
+- 💻 <b>work</b> : 職場のGitアカウント
+- 📚 <b>school</b> : 勉強用のGitアカウント
+- 🏠 <b>personal</b> : 個人開発用のGitアカウント
 
-## How to install
+## インストール方法
 
-### Install with Homebrew
+Windowsは標準でMakeコマンドが扱えないので、GnuWin32をインストールする必要があります。
+[こちらの最上部のコンプリートプラン](https://gnuwin32.sourceforge.net/packages/make.htm)を導入してください。
 
-```
-brew tap lucasnevespereira/tools
-```
+また、環境変数に`C:\Hoge\GnuWin32\bin`といったようにパスを追加してください。
+尚、インストールの際に空白文字列が入ったディレクトリに入れてしまうと正常にMakeコマンドが起動しなくなります。
 
-```
-brew install gituser
-```
-
-or 
-```
-brew install lucasnevespereira/tools/gituser
-```
-
-
-### Install manually
-
-Make sur your bin path is in your `$PATH`, you can check in your `.zshrc` or `.bash` file.
-
-_e.g_
+次に以下のコマンドを実行してください。
 ```shell
-export PATH="$HOME/bin:$PATH"
-```
-
-Run the following command from the root of the project:
-
-```
 make install
 ```
-<em>This will build gituser and move it to your `$HOME/bin`</em>
 
-Now you can call `gituser` globally 😀
+これらの導入を済ませれば、どのターミナルからでも `gituser` コマンドで呼び出しを行うことが出来ます 🐱
 
-### Add your git account data
+### アカウントの追加方法
 
-Run the following command :
+以下のコマンドを実行してください。
 
-```
+```shell
 gituser config
 ```
 
-<em>This command will help you setup your different git accounts. </em>
+<em>コマンド実行後ターミナル上で設定すべき項目がナビゲートされます。指示に従って入力してください。 </em>
 
-## Usage
+## 使用方法
 
+`gituser`コマンドの後ろに何らかの指示を出して実行します。
 
-Call executable with mode
-
-```
+```shell
 gituser <mode>
 ```
 
-<em>Examples: </em>
+<em>コマンドの例</em>
 
-```
+```shell
 gituser work
 ```
 
-```
+```shell
 gituser school
 ```
 
-```
+```shell
 gituser personal
 ```
 
-#### Flags
+#### その他コマンド
 
-The flag `help` is a default flag that prints existing flags.
+`help` コマンドはどのようなコマンドがあるかを表示します。
 
-The flag `manual` will print some information about the program.
+`manual` コマンドはgituserがどういったツールなのかの説明を表示します。
 
-The flag `info` that will print some information about the accounts.
+`info` コマンドは各アカウントについての情報を表示します。
 
-The flag `now` that will print what git account is currently active.
+`now` コマンドは現在どのアカウントを使っているかを表示します。
 
-```
-gituser <flag>
-```
 
 ## How to Contribute
 
@@ -120,6 +99,11 @@ If you want to contribute to this project please read the [Contribution Guide](C
 
 <hr>
 
-## License
+## ライセンス表記
 
 This project is under [MIT LICENSE](LICENSE)
+
+Copyright (c) 2020 Lucas Neves Pereira
+
+ライセンスはReadmeの下部に代表して記載させていただきます。
+僕が書き換えた部分以外は全てオリジナルのライセンスに準拠します。
