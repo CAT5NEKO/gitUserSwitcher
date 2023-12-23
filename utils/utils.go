@@ -2,11 +2,13 @@ package utils
 
 import (
 	"fmt"
-	"github.com/fatih/color"
-	"github.com/pkg/errors"
 	"go-gituser/internal/models"
 	"go-gituser/state"
 	"os"
+	"path/filepath"
+
+	"github.com/fatih/color"
+	"github.com/pkg/errors"
 )
 
 func ReadFileData(filename string) ([]byte, error) {
@@ -75,7 +77,7 @@ func ensureLocalConfigDir() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	configDir := homeDir + "/.config/gituser/"
+	configDir := filepath.Join(homeDir, ".config", "gituser")
 	if _, err := os.Stat(configDir); errors.Is(err, os.ErrNotExist) {
 		err := os.MkdirAll(configDir, os.ModePerm)
 		if err != nil {
@@ -92,7 +94,7 @@ func getLocalFile(filename string) (string, error) {
 		return "", errors.Wrap(err, "checkFile - UserHomeDir")
 	}
 
-	localDataFile := localConfigDir + filename
+	localDataFile := filepath.Join(localConfigDir, filename)
 	_, err = os.Stat(localDataFile)
 	if os.IsNotExist(err) {
 		createdFile, err := os.Create(localDataFile)

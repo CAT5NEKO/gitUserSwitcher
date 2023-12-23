@@ -1,13 +1,14 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
 	"go-gituser/internal/app"
 	"go-gituser/internal/services/git"
 	"go-gituser/state"
 	"go-gituser/utils"
 	"go-gituser/utils/logger"
 	"os"
+
+	"github.com/spf13/cobra"
 )
 
 var workCmd = &cobra.Command{

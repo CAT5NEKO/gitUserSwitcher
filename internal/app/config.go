@@ -103,6 +103,8 @@ func getUserAccount(mode string) {
 		_, errEmail := fmt.Scanln(&inputSchoolEmail)
 		if errEmail != nil {
 			logger.PrintErrorReadingInput()
+			fmt.Println("Error reading work username:", errUsername)
+			fmt.Println("Please try again or check your input.")
 			os.Exit(1)
 		}
 	case utils.PersonalMode:
@@ -110,6 +112,8 @@ func getUserAccount(mode string) {
 		_, errUsername := fmt.Scanln(&inputPersonalUsername)
 		if errUsername != nil {
 			logger.PrintErrorReadingInput()
+			fmt.Println("Error reading work username:", errUsername)
+			fmt.Println("Please try again or check your input.")
 			os.Exit(1)
 		}
 
@@ -117,6 +121,8 @@ func getUserAccount(mode string) {
 		_, errEmail := fmt.Scanln(&inputPersonalEmail)
 		if errEmail != nil {
 			logger.PrintErrorReadingInput()
+			fmt.Println("Error reading work username:", errUsername)
+			fmt.Println("Please try again or check your input.")
 			os.Exit(1)
 		}
 

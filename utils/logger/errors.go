@@ -3,27 +3,32 @@ package logger
 import (
 	"errors"
 	"fmt"
-	"github.com/fatih/color"
 	"os"
+
+	"github.com/fatih/color"
 )
 
 var (
-	errExecutingMode    = errors.New("something went wrong executing this mode 😭")
-	errReadingInput     = errors.New("couldn't understand your input 🤯")
+	errExecutingMode = errors.New("something went wrong executing this mode 😭")
+	errReadingInput  = errors.New("couldn't understand your input 🤯")
 )
 
 func PrintErrorExecutingMode() {
-	fmt.Fprintf(os.Stderr, color.RedString("error: ")+"%v \n", errExecutingMode)
+	printError("Error executing mode", errExecutingMode)
 }
 
 func PrintErrorReadingInput() {
-	fmt.Fprintf(os.Stderr, color.RedString("error: ")+"%v \n", errReadingInput)
+	printError("Error reading input", errReadingInput)
 }
 
 func PrintError(err error) {
-	fmt.Fprintf(os.Stderr, color.RedString("error: ")+"%v \n", err)
+	printError("Error", err)
 }
 
 func PrintErrorWithMessage(err error, message string) {
-	fmt.Fprintf(os.Stderr, color.RedString("error: ")+" %s - %v \n", message, err)
+	printError(message, err)
+}
+
+func printError(message string, err error) {
+	fmt.Fprintf(os.Stderr, color.RedString("error: %s - %v \n", message, err))
 }

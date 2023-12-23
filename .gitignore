@@ -10,5 +10,6 @@ dist/
 
 gituser
 go-gituser
+gituser.exe
 
 data/accounts.json
